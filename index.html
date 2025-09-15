@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="file" id="plik" accept="image/png, image/jpeg" required />
+    <br>
+    <input type="number" id="in2" required>
+    <br>
+    <input type="radio" id="in3" name="radio" value="1.5"><label for="in3">Błyszczący</label>
+    <br>
+    <input type="radio" id="in4" name="radio" value="2"><label for="in4">Matowy</label>
+    <br>
+    <button id="but1">Prześlij do koszyka</button>
+    
+    <div id="koszyk"></div>
+
+    <script>
+        const button1 = document.getElementById("but1")
+        button1.addEventListener("click", function(){
+            let img = document.createElement("img")
+            img.src = URL.createObjectURL(document.querySelector("#plik").files[0])
+
+            let koszyk = document.querySelector("#koszyk")
+            koszyk.appendChild(img)
+
+            let ilosc_kopii = document.getElementById("in2").value
+            const paragraf1 = document.createElement("p")
+            paragraf1.innerHTML = "Liczba kopii: " + ilosc_kopii
+
+            koszyk.appendChild(paragraf1)
+
+            let papier = document.querySelector('input[type=radio]:checked').value
+
+            let cena = papier * ilosc_kopii
+            const paragraf2 = document.createElement("p")
+            paragraf2.innerHTML = "Cena: " + cena
+            koszyk.appendChild(paragraf2)
+
+        })
+    </script>
+</body>
+</html>
