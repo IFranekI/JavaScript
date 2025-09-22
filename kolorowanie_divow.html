@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <label for="">Kolor: </label>
+    <input type="text" id="kolor">
+    <br>
+    <label>Div: </label>
+    <input type="number" id="numer">
+    <button id="but1">Guzik</button>
+    <br>
+    <div>
+        <div id="div1"></div>
+        <div id="div3"></div>
+    </div>
+    
+    <div>
+        <div id="div2"></div>
+        <div id="div4"></div>
+    </div>
+    <script>
+
+        const button = document.querySelector("#but1")
+
+        button.addEventListener("click", function(){
+            let color_div = document.querySelector("#kolor").value
+            let number_div = document.querySelector("#numer").value
+            let selected_div = document.querySelector("#div" + number_div)
+            selected_div.style = "background-color: " + color_div
+
+        })
+    </script>
+</body>
+</html>
